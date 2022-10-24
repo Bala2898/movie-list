@@ -31,7 +31,7 @@ module.exports={
                 console.log(req.body)
                 if(result)
                 {  
-                     res.status(404).send("user alredy exists");
+                     res.status(404).send("user already exists");
                      return;
                 }
                 else if(req.body.user_name.length==0)
@@ -271,22 +271,3 @@ module.exports={
     }
     
 }
-
-
-// FavouriteMovie.update({
-    // movie_name:req.body.movie_name,
-    // rating:req.body.rating,
-    // cast:req.body.cast,
-    // genre:req.body.genre,
-    // release_date:req.body.release_date,
-    // userId:req.id
-// },{
-//     where:{userId:req.id},
-//     where:{movie_name:req.params.movie_name}
-// })
-// .then((result)=>{
-//     res.status(200).send("update movie details")
-// })
-// .catch((err)=>{
-//     res.status(404).send(err)
-// })
