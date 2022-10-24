@@ -8,17 +8,7 @@ module.exports={
 
     
     userRegister:(req,res)=>{
-        //  User.findOne({
-        //      where:{user_name:req.body.user_name}
-        //  })
-        //  .then((result)=>{
-        //      if(result)
-        //      {  
-        //           res.status(404).send("user alredy exists");
-        //           return;
-        //      }
             User.findOne({ 
-                //  where:{email:req.body.email}
                 where: {
 					[Op.or]: [
 						{user_name:req.body.user_name},
@@ -27,8 +17,6 @@ module.exports={
 				}
             })
             .then((result)=>{
-                console.log(result)
-                console.log(req.body)
                 if(result)
                 {  
                      res.status(404).send("user already exists");
@@ -90,7 +78,6 @@ module.exports={
                     })
                 }
             })   
-        // })
         .catch((err)=>{
             res.status(404).send(err);
         })
@@ -158,13 +145,11 @@ module.exports={
     {
         FavouriteMovie.findOne({
             where: {
-                [Op.or]: [
+                [Op.and]: [
                     {userId:req.id},
                     {movie_name:req.body.movie_name}
                 ]
             }
-            // where:{userId:req.id},
-            // where:{movie_name:req.body.movie_name}
         })
         .then((result)=>{
             if(result)
@@ -195,13 +180,11 @@ module.exports={
     {
         FavouriteMovie.findOne({
             where: {
-                [Op.or]: [
+                [Op.and]: [
                     {userId:req.id},
                     {movie_name:req.query.movie_name}
                 ]
             }
-            // where:{userId:req.id},
-            // where:{movie_name:req.query.movie_name}
         })
         .then((result)=>{
             if(result)
@@ -231,14 +214,11 @@ module.exports={
     favoriteMovieDelete:(req,res)=>{
         FavouriteMovie.findOne({
             where: {
-                [Op.or]: [
+                [Op.and]: [
                     {userId:req.id},
                     {movie_name:req.params.movie_name}
                 ]
             }
-                // where:{userId:req.id},
-                // where:{movie_name:req.params.movie_name}
-
         })
         .then((result)=>{
             if(result)
@@ -270,4 +250,4 @@ module.exports={
         })
     }
     
-}
+};

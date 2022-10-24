@@ -9,7 +9,6 @@ const app=express();
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 app.use(userRout);
-
 //association
 
 User.hasMany(FavouriteMovie);
