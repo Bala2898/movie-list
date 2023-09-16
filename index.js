@@ -8,7 +8,7 @@ const userRout=require("./routers/user_rout");
 const app=express();
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
-app.use(userRout);
+app.use(userRout)
 //association
 
 User.hasMany(FavouriteMovie);
